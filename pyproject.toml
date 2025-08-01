@@ -40,7 +40,7 @@ markers = [
 ]
 
 [tool.coverage.run]
-source = "."
+source = ["."]
 omit = [
     "*/venv/*",
     "*/migrations/*", 
