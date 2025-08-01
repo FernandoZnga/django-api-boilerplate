@@ -2,7 +2,7 @@
 
 ![Django](https://img.shields.io/badge/Django-5.2.4-green?logo=django)
 ![DRF](https://img.shields.io/badge/DRF-3.16.0-red?logo=django)
-![Python](https://img.shields.io/badge/Python-3.8%2B-blue?logo=python)
+![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
 ![Tests](https://img.shields.io/badge/tests-25%20passing-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
 ![License](https://img.shields.io/badge/license-MIT-blue)
@@ -167,7 +167,7 @@ The `.env.example` file contains all available environment variables:
 
 #### CI Workflow (`.github/workflows/ci.yml`)
 - **Triggers**: Push/PR to `main` and `develop` branches
-- **Testing**: Multi-Python version testing (3.8-3.11)
+- **Testing**: Multi-Python version testing (3.10-3.11)
 - **Quality**: Code linting with flake8, black, isort
 - **Security**: Vulnerability scanning with bandit and safety
 - **Coverage**: Automated coverage reporting to Codecov
@@ -175,15 +175,19 @@ The `.env.example` file contains all available environment variables:
 #### Deployment Workflow (`.github/workflows/deploy.yml`)
 - **Triggers**: Push to `main` branch or version tags
 - **Testing**: Pre-deployment test validation
-- **Docker**: Automated container building and registry push
-- **Production**: Environment-specific deployment
+- **Static Files**: Automated static file collection
+- **Verification**: Deployment readiness validation
 
 ### Required GitHub Secrets
 For deployment workflow to work, configure these repository secrets:
 ```
 SECRET_KEY=your-django-secret-key
-DOCKER_USERNAME=your-docker-hub-username
-DOCKER_PASSWORD=your-docker-hub-password-or-token
+```
+
+### Optional GitHub Secrets
+For enhanced features, you can also configure:
+```
+CODECOV_TOKEN=your-codecov-token  # For coverage reporting
 ```
 
 ## 🐳 Docker Deployment
@@ -199,11 +203,15 @@ docker run -p 8000:8000 -e SECRET_KEY=your-secret-key django-api-boilerplate
 
 ### Production Deployment
 ```bash
-# Pull from registry (after CI/CD push)
-docker pull django-api-boilerplate:latest
-
 # Run with environment file
-docker run -p 8000:8000 --env-file .env django-api-boilerplate:latest
+docker run -p 8000:8000 --env-file .env django-api-boilerplate:local
+
+# Or with individual environment variables
+docker run -p 8000:8000 \
+  -e SECRET_KEY=your-production-secret \
+  -e DEBUG=False \
+  -e ALLOWED_HOSTS=yourdomain.com \
+  django-api-boilerplate:local
 ```
 
 ### Docker Compose (Optional)
@@ -250,4 +258,48 @@ pip install pre-commit
 # Install git hooks
 pre-commit install
 ```
+
+## 📋 Requirements
+
+### System Requirements
+- **Python**: 3.10 or 3.11
+- **Node.js**: Not required (no frontend build process)
+- **Database**: SQLite (default) or PostgreSQL for production
+- **Docker**: Optional, for containerized deployment
+
+### Python Dependencies
+The project uses flexible version constraints for better compatibility:
+- **Django**: 5.2.4 (LTS)
+- **Django REST Framework**: 3.16.0
+- **Testing**: pytest, coverage, selenium
+- **Code Quality**: black, flake8, isort, bandit, safety
+- **Production**: gunicorn, psycopg2-binary, whitenoise
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/amazing-feature`)
+3. Make your changes and add tests
+4. Ensure all tests pass: `python -m pytest`
+5. Format your code: `black . && isort .`
+6. Commit your changes (`git commit -m 'Add amazing feature'`)
+7. Push to the branch (`git push origin feature/amazing-feature`)
+8. Open a Pull Request
+
+### Development Guidelines
+- Follow PEP 8 style guidelines (enforced by flake8)
+- Write tests for new features
+- Maintain test coverage above 90%
+- Use meaningful commit messages
+- Update documentation as needed
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Django and Django REST Framework communities
+- All contributors and testers
+- GitHub Actions for CI/CD infrastructure
 
