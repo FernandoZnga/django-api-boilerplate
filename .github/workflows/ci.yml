@@ -85,8 +85,8 @@ jobs:
     - name: Run bandit security linter
       run: bandit -r . -f json -o bandit-report.json || true
 
-    - name: Run safety check
-      run: safety check --json > safety-report.json || true
+    - name: Run safety scan
+      run: safety scan --output json --output-file safety-report.json || true
 
     - name: Upload security reports
       uses: actions/upload-artifact@v4

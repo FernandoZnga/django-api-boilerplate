@@ -247,7 +247,7 @@ flake8 .
 bandit -r .
 
 # Check dependencies with safety
-safety check
+safety scan
 ```
 
 ### Pre-commit Setup (Optional)
