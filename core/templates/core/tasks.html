@@ -1,0 +1,27 @@
+{% extends "core/base.html" %}
+
+{% block title %}Tasks{% endblock %}
+
+{% block content %}
+<h2>All Tasks</h2>
+
+{% if tasks %}
+    {% for task in tasks %}
+    <div class="task {% if task.completed %}completed{% endif %}" data-task-id="{{ task.id }}">
+        <h3>{{ task.title }}</h3>
+        <p>{{ task.description }}</p>
+        <p><strong>Status:</strong> 
+            {% if task.completed %}
+                <span class="status-completed">Completed</span>
+            {% else %}
+                <span class="status-pending">Pending</span>
+            {% endif %}
+        </p>
+        <p><strong>Created by:</strong> {{ task.created_by.username }}</p>
+        <p><strong>Created:</strong> {{ task.created_at|date:"Y-m-d H:i" }}</p>
+    </div>
+    {% endfor %}
+{% else %}
+    <p id="no-tasks-message">No tasks available.</p>
+{% endif %}
+{% endblock %}
