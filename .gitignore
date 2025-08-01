@@ -153,7 +153,7 @@ ehthumbs.db
 # media/
 
 # Static files (will be collected during deployment)
-# staticfiles/
+staticfiles/
 
 # Selenium WebDriver
 geckodriver.log
