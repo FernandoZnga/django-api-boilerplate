@@ -4,8 +4,13 @@
 ![DRF](https://img.shields.io/badge/DRF-3.16.0-red?logo=django)
 ![Python](https://img.shields.io/badge/Python-3.10%2B-blue?logo=python)
 ![Tests](https://img.shields.io/badge/tests-25%20passing-brightgreen)
+![flake8](https://img.shields.io/badge/code%20style-flake8-brightgreen)
 ![Coverage](https://img.shields.io/badge/coverage-95%25-brightgreen)
+![CI](https://github.com/FernandoZnga/django-api-boilerplate/actions/workflows/ci.yml/badge.svg)
 ![License](https://img.shields.io/badge/license-MIT-blue)
+![GitHub issues](https://img.shields.io/github/issues/FernandoZnga/django-api-boilerplate)
+![GitHub pull requests](https://img.shields.io/github/issues-pr/FernandoZnga/django-api-boilerplate)
+![GitHub last commit](https://img.shields.io/github/last-commit/FernandoZnga/django-api-boilerplate)
 
 A comprehensive Django API boilerplate with a complete testing framework including unit tests, API tests, and UI tests using Selenium. Perfect for jumpstarting Django projects with a solid testing foundation.
 
