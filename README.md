@@ -25,6 +25,14 @@ A comprehensive Django API boilerplate with a complete testing framework includi
 - 📈 **Test Coverage** reporting
 - 🔧 **Pytest & Django TestCase** support
 - 📱 **Admin interface** configuration
+- 🚀 **CI/CD Pipeline** with GitHub Actions:
+  - Automated testing on multiple Python versions
+  - Code quality checks (linting, formatting)
+  - Security scanning with bandit and safety
+  - Coverage reporting to Codecov
+  - Automated deployment to production
+- 🐳 **Docker Support** for containerized deployment
+- ⚙️ **Environment Configuration** with .env support
 - 🎯 **Production-ready** structure
 
 ## 🚀 Quick Start

@@ -159,3 +159,14 @@ ehthumbs.db
 geckodriver.log
 chromedriver
 geckodriver
+
+# Security reports
+bandit-report.json
+safety-report.json
+
+# Docker
+.dockerignore
+docker-compose.override.yml
+
+# GitHub Actions artifacts
+.github/workflows/secrets.yml
